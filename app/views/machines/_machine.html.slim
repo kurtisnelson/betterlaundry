@@ -1,0 +1,16 @@
+.row-fluid
+  .span1
+    = machine.number
+    | &nbsp;
+    -if machine.remaining < 0
+      span.badge.badge-success
+    -elsif machine.remaining == 0
+      span.badge.badge-info
+    -else
+      span.badge.badge-important
+  .span1.offset10
+    -if machine.remaining > 0
+      =link_to "Notify", room_machine_notify_path(machine.room, machine), class: "btn btn-mini", method: :put
+.row-fluid
+  div.progress.progress-striped.active
+    div.bar style="width: #{machine.percent}%;"

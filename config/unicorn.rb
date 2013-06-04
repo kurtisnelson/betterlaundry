@@ -5,6 +5,8 @@ listen ENV['PORT'], backlog: Integer(ENV['UNICORN_BACKLOG'] || 200)
 
 before_fork do |server, worker|
 
+  @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2")
+  
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid

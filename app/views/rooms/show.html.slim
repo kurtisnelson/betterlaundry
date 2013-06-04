@@ -1,0 +1,8 @@
+h1=@room.name
+p.lead
+  | Synced 
+  =time_ago_in_words(@room.last_synced)
+  |  ago
+
+-@room.machines.each do |machine|
+    =render machine

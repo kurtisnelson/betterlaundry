@@ -1,0 +1,10 @@
+table
+  tr
+    th Name
+    th
+  - @rooms.each do |room|
+       tr
+          td=room.name
+          td
+            =link_to "View", room_path(room)
+            =link_to "Sync", room_sync_path(room), method: :put
