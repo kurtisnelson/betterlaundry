@@ -1,1 +1,0 @@
-SyncWorker.perform_async
