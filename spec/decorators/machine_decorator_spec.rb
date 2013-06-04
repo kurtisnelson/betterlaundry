@@ -5,6 +5,6 @@ describe MachineDecorator do
   subject{MachineDecorator.decorate(machine)}
 
   it 'calculates a status bar' do
-    subject.percent.should eq 66
+    subject.percent.should be_within(0.75).of(66)
   end
 end

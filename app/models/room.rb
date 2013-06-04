@@ -7,4 +7,12 @@ class Room < ActiveRecord::Base
     in_use = machines.where(remaining: 1..9999).count
     return (in_use.to_f/machines.count*100).to_i
   end
+
+  def washers
+    machines.where(type: "washer")
+  end
+
+  def dryers
+    machines.where(type: "dryer")
+  end
 end
