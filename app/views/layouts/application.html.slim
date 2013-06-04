@@ -11,21 +11,21 @@ html lang="en"
     = javascript_include_tag "application"
 
   body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.brand href="#" BetterLaundry
-          .container.nav-collapse
-            ul.nav
-              li= link_to "Rooms", rooms_path
-
     .container
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.brand href="#" BetterLaundry
+            .collapse.nav-collapse
+              ul.nav
+                li= link_to "Rooms", rooms_path
+                li= link_to "test", "http://google.com"
+
       .content
-        .row
           = render partial: "layouts/messages"
           = yield
     
