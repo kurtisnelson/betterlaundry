@@ -9,5 +9,5 @@ Betterlaundry::Application.routes.draw do
   
   mount Sidekiq::Web => '/sidekiq'
 
-  root to: 'home#index'
+  root to: 'rooms#index'
 end

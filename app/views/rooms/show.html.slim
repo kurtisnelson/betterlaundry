@@ -1,8 +1,13 @@
-h1=@room.name
-p.lead
-  | Synced 
-  =time_ago_in_words(@room.last_synced)
-  |  ago
-
+.row-fluid
+  .span5
+    h1=@room.name
+    p.lead
+      | Synced 
+      =time_ago_in_words(@room.last_synced)
+      |  ago
+  .span6.offset6
+    p
+      div.progress.progress-striped class="#{@room.bar_type}"
+        div.bar style="width: #{@room.utilization}%;"
 -@room.machines.each do |machine|
     =render machine

@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = RoomDecorator.decorate_collection(Room.all)
   end
 
   def show
