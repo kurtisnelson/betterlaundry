@@ -1,0 +1,12 @@
+h1 Rooms
+
+each room in controller
+  .row-fluid
+    .span4
+      p = room.name
+    .span4
+      view Bootstrap.ProgressBar isStriped=true isAnimated=true progressBinding="room.utilization"
+    .span4
+      linkTo 'rooms.show' room class="btn btn-mini btn-primary" | View
+
+outlet

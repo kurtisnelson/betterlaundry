@@ -1,0 +1,12 @@
+.row-fluid
+  .span5
+    h1=name
+    p.lead
+      | Synced
+      = last_synced
+      | ago
+  .span6.offset6
+    p
+      view Bootstrap.ProgressBar isStriped=true isAnimated=true progressBinding="Betterlaundry.roomController.utilization"
+each machine in machines
+    =render machine

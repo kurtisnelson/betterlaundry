@@ -1,9 +1,0 @@
-h2 Rooms
-- @rooms.each do |room|
-    .row-fluid        
-      .span4
-        p=room.name
-      .span4
-        div.progress.progress-striped class="#{room.bar_type}"
-          div.bar style="width: #{room.utilization}%;"
-      .span4=link_to "View", room_path(room), class: "btn btn-mini btn-primary"
