@@ -1,13 +1,29 @@
-.row-fluid
-  .span5
+.row
+  .col-md-4
     h1=@room.name
-    p.lead
-      | Synced 
-      =time_ago_in_words(@room.last_synced)
-      |  ago
-  .span6.offset6
-    p
-      div.progress.progress-striped class="#{@room.bar_type}"
-        div.bar style="width: #{@room.utilization}%;"
+  .col-md-2.pull-right
+    small
+      - if @room.last_synced
+        ' Updated
+        =time_ago_in_words(@room.last_synced)
+        |  ago
+      - else
+        | Never updated
+.row
+  .col-md-1.col-xs-2
+      = image_tag "washer.png", class: "img-responsive", width: 32
+      - if @room.washers.available.count > 0
+        .label.label-default
+          = @room.washers.available.count
+          |  open
+  .col-md-1.col-xs-2
+      = image_tag "dryer.png", class: "img-responsive", width: 32
+      - if @room.dryers.available.count > 0
+        .label.label-default
+          = @room.dryers.available.count
+          |  open
+      - else
+        .label.label-danger Full
+br
 -@room.machines.each do |machine|
-    =render machine
+  = render machine

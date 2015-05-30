@@ -1,16 +1,21 @@
-.row-fluid
-  .span1
-    = machine.number
-    | &nbsp;
-    -if machine.remaining < 0
-      span.badge.badge-success
-    -elsif machine.remaining == 0
-      span.badge.badge-info
-    -else
-      span.badge.badge-important
-  .span1.offset10
-    -if machine.remaining > 0
-      =link_to "Notify", room_machine_notify_path(machine.room, machine), class: "btn btn-mini", method: :put
-.row-fluid
-  div.progress.progress-striped.active
-    div.bar style="width: #{machine.percent}%;"
+.col-lg-3.col-md-4.col-sm-6.col-xs-12
+  .panel.panel-default
+    .panel-heading
+      h3 class="panel-title"
+        = machine.kind.capitalize
+        |  #
+        = machine.number
+    .panel-body
+      .progress
+        div class=machine.progress_bar_class role="progressbar" aria-valuenow="#{machine.percent}" aria-valuemin="0" aria-valuemax="100" style="width: #{machine.percent}%;"
+          span.sr-only #{machine.percent}% Complete
+      - if machine.available?
+        p Available!
+      - elsif machine.out_of_service?
+        p Out of Service
+      - elsif machine.remaining > 0
+        p
+          = machine.remaining
+          |  minutes remaining
+      - else
+        p Waiting for Unload

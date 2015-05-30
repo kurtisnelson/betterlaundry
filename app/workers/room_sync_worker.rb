@@ -9,8 +9,9 @@ class RoomSyncWorker
 
     laundry_view.each_with_index do |machine, i|
       obj = Machine.where(room: room, number: (i+1)).first_or_create
-      obj.status = machine.status
       obj.remaining = machine.remaining
+      obj.kind = machine.kind
+      obj.out_of_service = machine.broken
       obj.save
     end
     room.last_synced = DateTime.now

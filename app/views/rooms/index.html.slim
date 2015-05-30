@@ -1,9 +1,19 @@
-h2 Rooms
+br
 - @rooms.each do |room|
-    .row-fluid        
-      .span4
-        p=room.name
-      .span4
-        div.progress.progress-striped class="#{room.bar_type}"
-          div.bar style="width: #{room.utilization}%;"
-      .span4=link_to "View", room_path(room), class: "btn btn-mini btn-primary"
+  .col-lg-3.col-md-4.col-sm-6.col-xs-12
+    a href="#{room_path(room)}"
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title=room.name
+        .panel-body
+          = image_tag "washer.png", width: 32
+          | &nbsp;
+          = room.washers.available.count
+          | /
+          = room.washers.count
+          | &nbsp;
+          = image_tag "dryer.png", width: 32
+          | &nbsp;
+          = room.dryers.available.count
+          | /
+          = room.dryers.count

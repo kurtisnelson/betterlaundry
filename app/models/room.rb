@@ -4,15 +4,16 @@ class Room < ActiveRecord::Base
   has_many :machines
 
   def utilization
-    in_use = machines.where(remaining: 1..9999).count
+    return 100 unless machines.count > 0
+    in_use = machines.where("remaining IS NOT NULL").count
     return (in_use.to_f/machines.count*100).to_i
   end
 
   def washers
-    machines.where(type: "washer")
+    machines.washers
   end
 
   def dryers
-    machines.where(type: "dryer")
+    machines.driers
   end
 end

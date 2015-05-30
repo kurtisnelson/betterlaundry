@@ -11,20 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130604202430) do
+ActiveRecord::Schema.define(version: 20150530215605) do
 
-  create_table "machines", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "machines", force: :cascade do |t|
     t.integer  "room_id"
     t.integer  "number"
     t.integer  "remaining"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "kind"
+    t.boolean  "out_of_service", default: false
   end
 
   add_index "machines", ["room_id"], name: "index_machines_on_room_id", using: :btree
 
-  create_table "rooms", force: true do |t|
+  create_table "rooms", force: :cascade do |t|
     t.string   "name"
     t.integer  "lvid"
     t.datetime "created_at"
