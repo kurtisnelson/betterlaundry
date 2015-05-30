@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530215605) do
+ActiveRecord::Schema.define(version: 20150530223826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "machines", force: :cascade do |t|
+  create_table "machines", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "room_id"
     t.integer  "number"
     t.integer  "remaining"
@@ -28,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150530215605) do
 
   add_index "machines", ["room_id"], name: "index_machines_on_room_id", using: :btree
 
-  create_table "rooms", force: :cascade do |t|
+  create_table "rooms", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.integer  "lvid"
     t.datetime "created_at"
