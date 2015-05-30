@@ -16,6 +16,8 @@
         .label.label-default
           = @room.washers.available.count
           |  open
+      - else
+        .label.label-danger Full
   .col-md-1.col-xs-2
       = image_tag "dryer.png", class: "img-responsive", width: 32
       - if @room.dryers.available.count > 0
