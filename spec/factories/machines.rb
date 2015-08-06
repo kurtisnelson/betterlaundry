@@ -5,6 +5,5 @@ FactoryGirl.define do
     room_id nil
     number 1
     remaining 40
-    status "Starte"
   end
 end
