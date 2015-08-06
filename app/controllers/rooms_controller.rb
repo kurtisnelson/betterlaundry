@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
   end
 
   def sync
-    RoomSyncWorker.perform_async(params[:room_id])
+    RoomSyncJob.perform_later params[:room_id]
     flash[:notice] = "Syncing the room"
     redirect_to request.referrer
   end

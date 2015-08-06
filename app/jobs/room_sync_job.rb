@@ -1,10 +1,9 @@
 require 'laundry_view'
+class RoomSyncJob < ActiveJob::Base
+  queue_as :default
 
-class RoomSyncWorker
-  include Sidekiq::Worker
-
-  def perform id
-    room = Room.find(id)
+  def perform(*args)
+    room = Room.find(args[0])
     laundry_view = LaundryView::Sync.new room.lvid
 
     laundry_view.each_with_index do |machine, i|
