@@ -1,4 +1,4 @@
-require 'laundry_view'
+require 'laundryview'
 class RoomSyncJob < ActiveJob::Base
   queue_as :default
 

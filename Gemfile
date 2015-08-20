@@ -7,6 +7,7 @@ gem 'draper'
 gem 'foreman'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'laundryview'
 gem 'pg'
 gem 'puma'
 gem 'rails'
@@ -18,22 +19,18 @@ gem 'sinatra'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
-#LaundryView
-gem 'curb'
-gem 'nokogiri'
-
 group :test, :development do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'forgery'
-  gem 'zonebie'
   gem 'pry'
+  gem 'rspec-rails'
+  gem 'zonebie'
 end
 
 group :test do
   gem 'capybara'
-  gem 'launchy'
-  gem 'database_cleaner'
   gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'launchy'
   gem 'simplecov'
 end

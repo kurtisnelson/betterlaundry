@@ -98,6 +98,9 @@ GEM
     json (1.8.2)
     launchy (2.4.3)
       addressable (~> 2.3)
+    laundryview (0.1.0)
+      curb (~> 0.8)
+      nokogiri (~> 1.6)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -234,7 +237,6 @@ DEPENDENCIES
   capybara
   capybara-webkit
   coffee-rails
-  curb
   database_cleaner
   draper
   factory_girl_rails
@@ -243,7 +245,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   launchy
-  nokogiri
+  laundryview
   pg
   pry
   puma
